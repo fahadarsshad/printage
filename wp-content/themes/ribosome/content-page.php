@@ -9,7 +9,7 @@
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php if(is_front_page() ): ?>
 		<!--custom view-->
-		<div style="width:30%; height:300px; padding:0 10px 0 0;float:left; overflow: hidden; ">
+		<div style="width:45%; height:300px; padding:0 10px 0 0;float:left; overflow: hidden; ">
 		<?php 
 		$yourpostid = 34; // <--- replace with your specific post id
 					$args=array(
@@ -24,16 +24,20 @@
 					if( $my_query->have_posts() ) {
 					  while ($my_query->have_posts()) : $my_query->the_post(); ?>
 					  	<header class="entry-header">
-							<h1 class="entry-title"><?php the_title(); ?></h1>
+							<h1 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+							
 						</header>
+					    <?php ?>
 					    <?php
-					    the_content();
+					    the_excerpt();
+					    
 					  endwhile;
 					}
 					wp_reset_query();  // Restore global post data stomped by the_post().
 		?>
 		</div>
-		<div style="width:30%; height:300px; padding:0 10px 0 0;float:left; overflow: hidden; ">
+		<div style="width:45%; height:300px; padding:0 10px 0 0;float:left; overflow: hidden; ">
+			
 		<?php 
 		$yourpostid = 16; // <--- replace with your specific post id
 					$args=array(
@@ -48,34 +52,11 @@
 					if( $my_query->have_posts() ) {
 					  while ($my_query->have_posts()) : $my_query->the_post(); ?>
 					  	<header class="entry-header">
-							<h1 class="entry-title"><?php the_title(); ?></h1>
+							<h1 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 						</header>
 					    <?php
-					    the_content();
-					  endwhile;
-					}
-					wp_reset_query();  // Restore global post data stomped by the_post().
-		?>
-		</div>
-		<div style="width:30%; height:300px; padding:0 10px 0 0;float:left; overflow: hidden; ">
-		<?php 
-		$yourpostid = 18; // <--- replace with your specific post id
-					$args=array(
-					  'p' => $yourpostid,
-					  'post_type' => 'post',
-					  'post_status' => 'publish',
-					  'posts_per_page' => 1,
-					  'caller_get_posts'=> 1
-					);
-					$my_query = null;
-					$my_query = new WP_Query($args);
-					if( $my_query->have_posts() ) {
-					  while ($my_query->have_posts()) : $my_query->the_post(); ?>
-					  	<header class="entry-header">
-							<h1 class="entry-title"><?php the_title(); ?></h1>
-						</header>
-					    <?php
-					    the_content();
+					    echo get_the_post_thumbnail('16');
+					     the_excerpt();
 					  endwhile;
 					}
 					wp_reset_query();  // Restore global post data stomped by the_post().

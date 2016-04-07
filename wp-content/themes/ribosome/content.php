@@ -19,6 +19,7 @@
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 				<?php }else{ ?>
 					<h2 class="entry-title"><?php the_title(); ?></h2>
+					
 				<?php } ?>
 				
 				<!-- Author, date and comments -->
@@ -36,6 +37,7 @@
 			</div><!-- .entry-title-subtitle -->
 		</header><!-- .entry-header -->
 		<?php endif; // is_single() ?>
+		
 			
 		<!-- Subtitle widget area -->
 		<?php if (is_single()) { ?>
@@ -47,7 +49,6 @@
 		<?php //if (  is_home() || is_search() || is_category() || is_tag() || is_author() || is_archive() ) : // Only display Excerpts ?>
 		<?php if (  ( is_search() || is_category() || is_tag() || is_author() || is_archive() )  
 		||  (is_home() && get_theme_mod('ribosome_contenido_completo_entradas_pp', '') == '' ) ) : // Only display Excerpts ?>
-		
 			<div class="excerpt-wrapper"><!-- Excerpt -->
 			
 				<?php if (  (function_exists('has_post_thumbnail')) && (has_post_thumbnail())) : ?>
